@@ -1,0 +1,58 @@
+{
+    "componentConfigs": [
+        {
+            "id": "287e4f74-bddf-f0ce-d858-7d0b7c0400a4",
+            "folder": "",
+            "name": "",
+            "dependencies": [],
+            "type": "IoTHub",
+            "componentInfo": {
+                "values": {
+                    "iotHubConnectionString": "HostName=t-yiwche-test2-iothub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=biuTFSHVBCxOG9yp0PgKz28mqkEG0DbGJTWIbQX+Gac=",
+                    "eventHubConnectionString": "Endpoint=sb://iothub-ns-t-yiwche-t-670647-8d43f65e9a.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=biuTFSHVBCxOG9yp0PgKz28mqkEG0DbGJTWIbQX+Gac=",
+                    "eventHubConnectionPath": "t-yiwche-test2-iothub"
+                }
+            }
+        },
+        {
+            "id": "5aea71bc-bb9b-cfb2-35d5-fa2f2772b216",
+            "folder": "",
+            "name": "",
+            "dependencies": [],
+            "type": "CosmosDB",
+            "componentInfo": {
+                "values": {
+                    "subscriptionId": "0d0575c0-0b3f-458a-a1a7-7a618a596892",
+                    "resourceGroup": "t-yiwche-test-2",
+                    "cosmosDBAccountName": "t-yiwche-test2-cdb",
+                    "cosmosDBAccountKey": "4MD9RCwT80OKTifpwQCZzldvFPSATtoEtUbqRMNARdAgkdDW5pJrewSXKK4z5mz7gp5vTN1xDq27eJtdsHRN8w==",
+                    "cosmosDBDatabase": "t-yiwche-test-cdb-database",
+                    "cosmosDBCollection": "t-yiwche-test-cdb-collection"
+                }
+            }
+        },
+        {
+            "id": "7c2f0b28-80ab-7854-fe94-af1c8ce923bd",
+            "folder": "",
+            "name": "",
+            "dependencies": [
+                {
+                    "id": "287e4f74-bddf-f0ce-d858-7d0b7c0400a4",
+                    "type": 1
+                },
+                {
+                    "id": "5aea71bc-bb9b-cfb2-35d5-fa2f2772b216",
+                    "type": 0
+                }
+            ],
+            "type": "StreamAnalyticsJob",
+            "componentInfo": {
+                "values": {
+                    "subscriptionId": "0d0575c0-0b3f-458a-a1a7-7a618a596892",
+                    "resourceGroup": "t-yiwche-test-2",
+                    "streamAnalyticsJobName": "t-yiwche-test2-asa"
+                }
+            }
+        }
+    ]
+}

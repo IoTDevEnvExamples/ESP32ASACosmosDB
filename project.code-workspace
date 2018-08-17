@@ -1,0 +1,15 @@
+{
+    "folders": [
+        {
+            "path": "Device"
+        },
+        {
+            "path": "StreamAnalytics"
+        }
+    ],
+    "settings": {
+        "IoTWorkbench.BoardId": "devkit",
+        "IoTWorkbench.DevicePath": "Device",
+        "IoTWorkbench.StreamAnalyticsPath": "StreamAnalytics"
+    }
+}

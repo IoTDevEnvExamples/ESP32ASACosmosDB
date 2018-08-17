@@ -1,0 +1,12 @@
+-- Need help with your query?
+-- Check out some of the most common Stream Analytics query patterns:
+-- https://go.microsoft.com/fwLink/?LinkID=619153
+
+SELECT
+    *
+INTO
+    "cosmosdb-5aea71bc-bb9b-cfb2-35d5-fa2f2772b216"
+FROM
+    "iothub-287e4f74-bddf-f0ce-d858-7d0b7c0400a4"
+Where
+    Temperature > 40

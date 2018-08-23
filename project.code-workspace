@@ -8,7 +8,7 @@
         }
     ],
     "settings": {
-        "IoTWorkbench.BoardId": "devkit",
+        "IoTWorkbench.BoardId": "esp32",
         "IoTWorkbench.DevicePath": "Device",
         "IoTWorkbench.StreamAnalyticsPath": "StreamAnalytics"
     }

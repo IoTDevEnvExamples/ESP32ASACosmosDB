@@ -3,10 +3,12 @@
 -- https://go.microsoft.com/fwLink/?LinkID=619153
 
 SELECT
-    *
+    AVG(Temperature) as average_temperature, AVG(Humidity) as average_humidity
 INTO
     "cosmosdb-2923606a-2f1c-e8c0-74e6-037933217447"
 FROM
     "iothub-8341d26d-3fd9-3f82-aabf-3000238ff89f"
-Where
-    Temperature > 40
+GROUP BY
+    TumblingWindow(minute, 1)
+HAVING
+    AVG(Temperature) > 30 AND AVG(Humidity) > 40

@@ -6,7 +6,6 @@
 #include "Esp32MQTTClient.h"
 
 #define INTERVAL 10000
-#define DEVICE_ID "Esp32Device"
 #define MESSAGE_MAX_LEN 256
 // Please input the SSID and password of WiFi
 const char* ssid     = "";
@@ -16,7 +15,7 @@ const char* password = "";
 /*  "HostName=<host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>"                */
 /*  "HostName=<host_name>;DeviceId=<device_id>;SharedAccessSignature=<device_sas_token>"    */
 static const char* connectionString = "";
-const char *messageData = "{\"deviceId\":\"%s\", \"messageId\":%d, \"Temperature\":%f, \"Humidity\":%f}";
+const char *messageData = "{\"messageId\":%d, \"Temperature\":%f, \"Humidity\":%f}";
 static bool hasIoTHub = false;
 static bool hasWifi = false;
 int messageCount = 1;
@@ -130,7 +129,7 @@ if (hasWifi && hasIoTHub)
       char messagePayload[MESSAGE_MAX_LEN];
       float temperature = (float)random(0,500)/10;
       float humidity = (float)random(0, 1000)/10;
-      snprintf(messagePayload,MESSAGE_MAX_LEN, messageData, DEVICE_ID, messageCount++, temperature,humidity);
+      snprintf(messagePayload, MESSAGE_MAX_LEN, messageData, messageCount++, temperature, humidity);
       Serial.println(messagePayload);
       EVENT_INSTANCE* message = Esp32MQTTClient_Event_Generate(messagePayload, MESSAGE);
       Esp32MQTTClient_SendEventInstance(message);

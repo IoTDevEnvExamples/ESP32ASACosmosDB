@@ -4,17 +4,11 @@
 
 #include <WiFi.h>
 #include "Esp32MQTTClient.h"
+#include <Preferences.h>
 
 #define INTERVAL 10000
 #define MESSAGE_MAX_LEN 256
-// Please input the SSID and password of WiFi
-const char* ssid     = "";
-const char* password = "";
 
-/*String containing Hostname, Device Id & Device Key in the format:                         */
-/*  "HostName=<host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>"                */
-/*  "HostName=<host_name>;DeviceId=<device_id>;SharedAccessSignature=<device_sas_token>"    */
-static const char* connectionString = "";
 const char *messageData = "{\"messageId\":%d, \"Temperature\":%f, \"Humidity\":%f}";
 static bool hasIoTHub = false;
 static bool hasWifi = false;
@@ -85,6 +79,18 @@ void setup() {
   Serial.begin(115200);
   Serial.println("ESP32 Device");
   Serial.println("Initializing...");
+
+  Preferences preferences;
+  preferences.begin("Connections");
+  const char *ssid, *password, *connectionString;
+  String s = preferences.getString("WiFi_SSID");
+  String p =preferences.getString("WiFi_Password");
+  String cs = preferences.getString("ConStr");
+  ssid = s.c_str();
+  password = p.c_str();
+  connectionString = cs.c_str();
+  preferences.end();
+
   Serial.println(" > WiFi");
   Serial.println("Starting connecting WiFi.");
 
